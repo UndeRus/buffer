@@ -88,16 +88,6 @@ class WasmBuffer(private var buffer: ByteArray, private var currentPosition: Int
             return this
         }
 
-
-        // Write another buffer to this buffer
-//        override fun write(buffer: ReadBuffer) {
-//            val remaining = buffer.limit() - buffer.position()
-//            if (currentPosition + remaining > this.buffer.size) throw IndexOutOfBoundsException("Buffer overflow")
-//            for (i in currentPosition..min(buffer.limit(), limit)) {
-//                this.buffer[i] = buffer.get(i)
-//            }
-//            currentPosition += remaining
-//        }
         override fun write(buffer: ReadBuffer) {
             val remaining = buffer.limit() - buffer.position()
             if (currentPosition + remaining > this.buffer.size) throw IndexOutOfBoundsException("Buffer overflow")
