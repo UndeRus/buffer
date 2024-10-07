@@ -2,11 +2,12 @@ import groovy.util.Node
 import groovy.xml.XmlParser
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import java.net.URL
 
 plugins {
     kotlin("multiplatform") version "2.0.0"
-    id("com.android.library") version "8.4.0"
+    id("com.android.library") version "8.4.2"
     id("io.codearte.nexus-staging") version "0.30.0"
     `maven-publish`
     signing
@@ -56,6 +57,8 @@ kotlin {
     tvosArm64()
     tvosSimulatorArm64()
     tvosX64()
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs()
     applyDefaultHierarchyTemplate()
     sourceSets {
         commonTest.dependencies {
